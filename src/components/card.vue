@@ -1,12 +1,13 @@
 <template>
 <section class="container">
     <div class="card">
-      <h2 class="card__title">{{ item.name }}</h2>
-      <button @click="createTask" class="card__button">{{ button }}</button>
+      <h2 class="card__title">Si tu appuis sur le bouton tu me clone</h2>
+      <button @click="createTask(card)" class="card__button">clone moi</button>
     </div>
-    <div class="card" v-for="card in cards" v-bind:key="card">
-      <h2 class="card__title">{{ card.title }}</h2>
-      <button @click="createTask" class="card__button">{{ card.button }}</button>
+    <div class="card" v-for="(card, i) in cards" :key="i">
+      <h2 class="card__title">Si tu appuis sur le bouton tu me clone</h2>
+      <button @click="createTask(card)" class="card__button">clone moi</button>
+      {{ card }}
     </div>
   </section>
 </template>
@@ -14,36 +15,25 @@
 <script>
 export default {
   name: "card",
-  props:{
-    item: {
-      type: Object,
-      required: false,
-    },
-  },
   data() {
     return {
-      text: "Si tu appuis sur le bouton tu me clone",
-      button: "Clone moi",
       cards: [],
     }
   },
   methods: {
-    createTask() {
-      this.cards.push({
-        title: this.text,
-        button: this.button,
-      });
-    },
-    addPokemon(){
-      this.$emit("addPokemon", 1);
-    },
-  },
+    createTask(card) {
+      this.cards.push(card);
+    }
+  //   addPokemon(){
+  //     this.$emit("addPokemon", 1);
+  //   },
+  // },
+  }
 };
 </script>
 
 <style>
   .container {
-    width: 100vw;
     display: flex;
     flex-wrap: wrap;
   }

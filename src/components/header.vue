@@ -1,10 +1,11 @@
 <template>
   <header>
     <img class="logo" :src="image" alt="logo site">
-    <div class="list" v-for="item in items" :key="item">
-      <router-link to="/">{{ item.message }}</router-link>
-      <router-link to="/Pokemon">{{ item.Pokemon }}</router-link>
-    </div>
+    <ul class="list">
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/Pokemon">Pokemon</router-link></li>
+      <li><router-link to="/TodoList">Todo List</router-link></li>
+    </ul>
   </header>
 </template>
 
@@ -13,11 +14,6 @@ export default {
   name: "list",
   data() {
     return {
-      items: [
-        { message: "acceuil" },
-        { Pokemon: "Pokemon" },
-        { message: "nos membres" },
-      ],
       image: require("@/assets/logo.png")
     }
   }
@@ -33,6 +29,9 @@ header {
 }
 
 .list {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
   list-style: none;
 }
 </style>

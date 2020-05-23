@@ -3,10 +3,7 @@
     <list />
     <h1>Cards Generator</h1>
     <div class="card__section">
-      <card @addPokemon="setPokemon" v-for="(pokemon,i) in pokemons" 
-      :key="i"
-      :item="pokemon"
-      />
+      <card />
     </div>
     <div>
       <todo />
@@ -17,37 +14,30 @@
 <script>
 import list from "@/components/header.vue";
 import card from "@/components/card.vue";
-import todo from "@/components/todo.vue";
-import { GetPokemon } from "@/api.js";
+// import { GetPokemon } from "@/api.js";
 
 export default {
   name: "home",
-  data: () => ({
-    add: 1,
-    pokemons: {},
-  }),
   components: {
     list,
     card,
-    todo
   },
-  methods:{
-    setPokemon(id){
-      this.add += id;
-      this.GetPokemon();
-    },
-    createPokmeon(){
-      GetPokemon(this.add).then(data => {
-        this.pokemons = data.results;
-      });
-    },
-    created(){
-      console.log('created');
-      GetPokemon(this.add).then(data => {
-        this.pokemons = data.results;
-      });
-    }
-  }
+  // methods:{
+  //   setPokemon(id){
+  //     this.add += id;
+  //     this.GetPokemon();
+  //   },
+  //   createPokmeon(){
+  //     GetPokemon(this.add).then(data => {
+  //       this.pokemons = data.results;
+  //     });
+  //   },
+  //   created(){
+  //     console.log('created');
+  //     GetPokemon(this.add).then(data => {
+  //       this.pokemons = data.name;
+  //     });
+  //   }
 };
 </script>
 

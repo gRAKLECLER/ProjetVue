@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Pokemon from "@/views/Pokemon.vue"
+import Pokemon from "@/views/Pokemon.vue";
+import TodoList from "@/views/TodoList.vue";
 
 Vue.use(VueRouter);
 
@@ -11,10 +12,17 @@ const routes = [
     name: "Home",
     component: Home
   },
+
   {
     path: "/Pokemon",
     name: "Pokemon",
     component: Pokemon
+  },
+
+  {
+    path: "/TodoList",
+    name: "TodoList",
+    component: TodoList
   }
 ];
 
