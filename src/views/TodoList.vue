@@ -11,7 +11,7 @@
 
 export default {
     name: "Todo",
-  components: {
+    components: {
     todo,
     list,
   },

@@ -5,6 +5,8 @@
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/Pokemon">Pokemon</router-link></li>
       <li><router-link to="/TodoList">Todo List</router-link></li>
+      <li><router-link to="/Form">Form</router-link></li>
+      <li><router-link to="/Order">Order</router-link></li>
     </ul>
   </header>
 </template>
