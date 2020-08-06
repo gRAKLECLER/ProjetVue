@@ -1,10 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Pokemon from "@/views/Pokemon.vue";
-import TodoList from "@/views/TodoList.vue";
-import Form from "@/views/Form.vue";
-import Order from "@/views/order.vue";
+import City from "../views/City.vue";
 
 Vue.use(VueRouter);
 
@@ -14,28 +11,11 @@ const routes = [
     name: "Home",
     component: Home
   },
-
   {
-    path: "/Pokemon",
-    name: "Pokemon",
-    component: Pokemon
+    path: "/City",
+    name: "City",
+    component: City
   },
-
-  {
-    path: "/TodoList",
-    name: "TodoList",
-    component: TodoList
-  },
-  {
-    path: "/Form",
-    name: "Form",
-    component: Form
-  },
-  {
-    path: "/Order",
-    name: "Order",
-    component: Order
-  }
 ];
 
 const router = new VueRouter({

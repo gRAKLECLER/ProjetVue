@@ -1,39 +1,56 @@
 <template>
-  <header>
-    <img class="logo" :src="image" alt="logo site">
-    <ul class="list">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/Pokemon">Pokemon</router-link></li>
-      <li><router-link to="/TodoList">Todo List</router-link></li>
-      <li><router-link to="/Form">Form</router-link></li>
-      <li><router-link to="/Order">Order</router-link></li>
-    </ul>
-  </header>
+  <div class="Header" :class="{isActive : toggle}">
+      <ul class="Header__nav">
+        <router-link class="Header__link" to="/">Home</router-link>
+        <router-link class="Header__link" to="City">City</router-link>
+        <router-link class="Header__link" to="/">Favoris</router-link>
+      </ul>
+  </div>
 </template>
 
 <script>
+import EventBus from '@/EventBus.js'
+
 export default {
-  name: "list",
-  data() {
-    return {
-      image: require("@/assets/logo.png")
-    }
+  data:() =>({
+    toggle: false
+  }),
+  created(){
+    EventBus.$on("open", ()=>{
+      this.toggle = !this.toggle
+    });
+    },
   }
-};
 </script>
 
 <style>
-header {
-  width: 100vw;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
+  .Header{
+    position: absolute;
+    z-index: 2;
+    height: 100vh;
+    width: 40vw;
+    background: rgb(233, 233, 233);
+    box-shadow: 3px 5px 26px -10px rgba(0,0,0,0.75);
+    top: 0;
+    left: -150px;
+  }
 
-.list {
-  display: flex;
-  width: 40%;
-  justify-content: space-evenly;
-  list-style: none;
-}
+  .Header__nav{
+    height: 60%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .Header__link{
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+
+  .isActive{
+    left: 0px;
+  }
 </style>

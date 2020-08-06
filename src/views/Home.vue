@@ -1,52 +1,45 @@
 <template>
   <div class="home">
-    <list />
-    <h1>Cards Generator</h1>
-    <div class="card__section">
-      <card />
+    <h1>Meteo app</h1>
+    <BaseNav/>
+    <div class="text">
+      <h1>Paris,France</h1>
+      <h2>Jeudi 16 Mai 2020</h2>
     </div>
-    <div>
-      <todo />
-    </div>
+    <div class="card"></div>
   </div>
 </template>
 
 <script>
-import list from "@/components/header.vue";
-import card from "@/components/card.vue";
-// import { GetPokemon } from "@/api.js";
+import BaseNav from '@/components/BaseNav.vue'
 
 export default {
   name: "home",
   components: {
-    list,
-    card,
+    BaseNav,
   },
-  // methods:{
-  //   setPokemon(id){
-  //     this.add += id;
-  //     this.GetPokemon();
-  //   },
-  //   createPokmeon(){
-  //     GetPokemon(this.add).then(data => {
-  //       this.pokemons = data.results;
-  //     });
-  //   },
-  //   created(){
-  //     console.log('created');
-  //     GetPokemon(this.add).then(data => {
-  //       this.pokemons = data.name;
-  //     });
-  //   }
 };
 </script>
 
 <style>
-.card__section {
-  display: flex;
-  width: 95vw;
-  height: 100vh;
-  padding: 20px;
-  justify-content: center;
+
+.text{
+  margin-top: 20%;
+  width: 100%;
+  text-align: left;
+}
+
+.card{
+  width: 250px;
+  height: 150px;
+  background: silver;
+}
+
+h1{
+  margin: 0;
+}
+
+h2{
+  margin: 0;
 }
 </style>
