@@ -1,14 +1,14 @@
 <template>
   <div class="audio">
-    <h3>Player</h3>
-    <p 
-    v-for="(song, id) in songs" 
-    :key="id">
-      {{ song.name }}</p>
+    <div>
+      <h3>Player</h3>
+      <span>{{ current.title }}</span> - <span>{{ current.artist }}</span>
+    </div>
     <div class="audio__player">
-      <img class="audio__img" src="../assets/previous.svg" alt="previous">
-      <img class="audio__img" src="../assets/play.svg" alt="play">
-      <img class="audio__img" src="../assets/next.svg" alt="next">
+      <img @click="prev" class="audio__img" src="../assets/previous.svg" alt="previous">
+      <img v-if="!isPlaying" @click="play" class="audio__img" src="../assets/play.svg" alt="play">
+      <img v-else @click="pause" class="audio__img" src="../assets/pause.svg" alt="next">
+      <img @click="next" class="audio__img" src="../assets/next.svg" alt="next">
     </div>
   </div>
 </template>
@@ -16,10 +16,63 @@
 <script>
 export default {
   data:() => ({
+    current: {},
+    index:0,
+    isPlaying: false,
     songs:[
-      {id: 1, name:"LP - Muddy Waters"},
-    ]
+      { 
+        title:"Muddy Waters",
+        artist:"LP",
+        src: require('/mnt/c/Users/guill/git/ProjetVue/myapp/src/assets/LP - Muddy Waters [Audio] [Mpgun.com].mp3') 
+      },
+      { 
+        title:"Judgement Day",
+        artist:"Stealth",
+        src: require('/mnt/c/Users/guill/git/ProjetVue/myapp/src/assets/Stealth - Judgement Day _ Suits Music 5x15 [Mpgun.com].mp3') 
+      },
+      { 
+        title:"How you like me now",
+        artist:"The Heavy",
+        src: require('/mnt/c/Users/guill/git/ProjetVue/myapp/src/assets/The Heavy - How You Like Me Now (Raffertie Remix) _ Suits 3x16 Music [Mpgun.com].mp3') 
+      },
+    ],
+    player: new Audio()
   }),
+  methods: {
+    play (song) {
+      if (typeof song.src != "undefined"){
+        this.current = song;
+        this.player.src = this.current.src
+      }
+
+      this.player.play();
+      this.isPlaying = true;
+    },
+    pause () {
+      this.player.pause();
+      this.isPlaying = false;
+    },
+    next () {
+      this.index++;
+      if(this.index > this.songs.length - 1){
+        this.index = 0;
+      }
+      this.current = this.songs[this.index];
+      this.play(this.current)
+    },
+    prev () {
+      this.index--;
+      if(this.index < 0){
+        this.index = this.song.length - 1;
+      }
+      this.current = this.songs[this.index];
+      this.play(this.current)
+    }
+  },
+  created () {
+    this.current = this.songs[this.index];
+    this.player.src = this.current.src;
+  }
 }
 </script>
 
