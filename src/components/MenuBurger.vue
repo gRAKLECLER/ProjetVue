@@ -14,11 +14,12 @@ export default {
 </script>
 
 <style>
+
   .container{
     z-index: 2;
     position: relative;
-    width: 10%;
-    height: 10%;
+    width: 100%;
+    height: 100%;
   }
 
   .menuBurger{

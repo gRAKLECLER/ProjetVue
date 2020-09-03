@@ -2,8 +2,8 @@
   <div class="Header" :class="{isActive : toggle}">
       <ul class="Header__nav">
         <router-link class="Header__link" to="/">Home</router-link>
-        <router-link class="Header__link" to="City">City</router-link>
-        <router-link class="Header__link" to="/">Favoris</router-link>
+        <router-link class="Header__link" to="Playlist">Playlist</router-link>
+        <router-link class="Header__link" to="Favoris">Favoris</router-link>
       </ul>
   </div>
 </template>

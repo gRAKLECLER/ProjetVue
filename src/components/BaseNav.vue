@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="BaseNav">
     <Header/>
     <MenuBurger @click="openMenu"/>
   </div>
@@ -11,6 +11,9 @@ import MenuBurger from '@/components/MenuBurger.vue'
 import Header from '@/components/Header.vue'
 
 export default {
+  data:() =>({
+    show: true
+  }),
   components: {
     MenuBurger,
     Header,
@@ -24,5 +27,7 @@ export default {
 </script>
 
 <style>
-
+  .BaseNav{
+    margin-top: 20px;
+  }
 </style>
