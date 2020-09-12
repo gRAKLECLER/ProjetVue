@@ -1,7 +1,7 @@
 <template>
   <div class="audio">
     <div>
-      <h3>Player</h3>
+      <h3>Music Player</h3>
       <span>{{ current.title }}</span> - <span>{{ current.artist }}</span>
     </div>
     <div class="audio__player">
@@ -10,6 +10,15 @@
       <img v-else @click="pause" class="audio__img" src="../assets/pause.svg" alt="next">
       <img @click="next" class="audio__img" src="../assets/next.svg" alt="next">
     </div>
+    <section class="containerSong">
+      <button 
+        @click="play(song)" 
+        v-for="song in songs" 
+        :key="song.src" 
+        :class="(song.src == current.src) ? 'song.playing' : 'song'">
+          {{ song.title }} - {{ song.artist }}
+      </button>
+    </section>
   </div>
 </template>
 
@@ -80,8 +89,10 @@ export default {
 .audio{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
   height: 80vh;
+  width: 100vw;
 }
 
 .audio__player{
@@ -93,5 +104,22 @@ export default {
 
 .audio__img{
   width: 10%;
+}
+
+.containerSong{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 30%;
+  width: 40%;
+}
+
+button{
+  border: none;
+  padding: 1rem;
+  margin-top: 10px;
+  background-color: crimson;
+  color: white;
 }
 </style>

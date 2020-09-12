@@ -1,0 +1,19 @@
+{
+  songs:[
+    { 
+      "title":"Muddy Waters",
+      "artist":"LP",
+      "src": "/mnt/c/Users/guill/git/ProjetVue/myapp/src/assets/LP - Muddy Waters [Audio] [Mpgun.com].mp3" 
+    },
+    { 
+      "title":"Judgement Day",
+      "artist":"Stealth",
+      "src": "/mnt/c/Users/guill/git/ProjetVue/myapp/src/assets/Stealth - Judgement Day _ Suits Music 5x15 [Mpgun.com].mp3"
+    },
+    { 
+      "title":"How you like me now",
+      "artist":"The Heavy",
+      "src": "/mnt/c/Users/guill/git/ProjetVue/myapp/src/assets/The Heavy - How You Like Me Now (Raffertie Remix) _ Suits 3x16 Music [Mpgun.com].mp3"
+    }
+  ]
+}
