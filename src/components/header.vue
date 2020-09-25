@@ -1,56 +1,40 @@
 <template>
-  <div class="Header" :class="{isActive : toggle}">
-      <ul class="Header__nav">
-        <router-link class="Header__link" to="/">Home</router-link>
-        <router-link class="Header__link" to="/Playlist">Playlist</router-link>
-        <router-link class="Header__link" to="Favoris">Favoris</router-link>
+  <header class="header">
+    <nav class="header__nav">
+        <h1>Food Recipes</h1>
+      <ul class="header__links">
+        <li>Accueil</li>
+        <li>Recettes</li>
+        <li>Favoris</li>
       </ul>
-  </div>
+    </nav>
+  </header>
 </template>
 
 <script>
-import EventBus from '@/EventBus.js'
-
 export default {
-  data:() =>({
-    toggle: false
-  }),
-  created(){
-    EventBus.$on("open", ()=>{
-      this.toggle = !this.toggle
-    });
-    },
-  }
+
+}
 </script>
 
 <style>
-  .Header{
-    position: absolute;
-    z-index: 2;
-    height: 100vh;
-    width: 40vw;
-    background: rgb(233, 233, 233);
-    box-shadow: 3px 5px 26px -10px rgba(0,0,0,0.75);
-    top: 0;
-    left: -150px;
+  .header{
+    width: 100vw;
+    background-color: chartreuse;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
-  .Header__nav{
-    height: 60%;
-    width: 40%;
+  .header__nav{
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+  }
+
+  .header__links{
+    width: 80%;
+    display: flex;
     align-items: center;
-  }
-
-  .Header__link{
-    text-decoration: none;
-    color: #2c3e50;
-    font-weight: bold;
-  }
-
-  .isActive{
-    left: 0px;
+    justify-content: space-evenly;
+    list-style: none;
+    font-weight: 600;
   }
 </style>
