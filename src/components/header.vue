@@ -1,13 +1,6 @@
 <template>
   <header class="header">
-    <nav class="header__nav">
-        <h1>Food Recipes</h1>
-      <ul class="header__links">
-        <li>Accueil</li>
-        <li>Recettes</li>
-        <li>Favoris</li>
-      </ul>
-    </nav>
+        <h1>Meals Recipes</h1>
   </header>
 </template>
 
@@ -20,21 +13,15 @@ export default {
 <style>
   .header{
     width: 100vw;
-    background-color: chartreuse;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-
-  .header__nav{
-    display: flex;
-    justify-content: center;
-  }
-
-  .header__links{
-    width: 80%;
+    height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    list-style: none;
-    font-weight: 600;
+    justify-content: flex-start;
+    background-color: rgb(53, 6, 33);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  h1{
+    margin: 0;
+    color: rgb(248, 233, 248);
   }
 </style>
