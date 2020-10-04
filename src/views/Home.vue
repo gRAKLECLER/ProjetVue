@@ -1,134 +1,81 @@
 <template>
-  <div class="recipe">
-    <Header/>
-    <div class="searchBar">
-      <form class="form" action="">
-        <label for="input">Search</label>
-        <input type="text" id="input" v-model="src">
-      </form>
+  <div>
+    <h1>hello</h1>
+    <form action="">
+      <label for="character">enter a character</label>
+      <input v-model="src" type="text" name="" id="character" placeholder="character">
+    </form>
+    <h2>Filter by race</h2>
+    <div class="button">
+      <button @click="filterByRace('Human')">Humans</button>
+      <button @click="filterByRace('Hobbit')">Hobbit</button>
+      <button>ELf</button>
+      <button @click="verify = true">ALL</button>
     </div>
-    <div 
-    class="recipeCard" 
-    v-for="(cocktail, i) in cocktails" 
-    :key="i">
-      <div class="recipeInfo">
-        <img 
-        class="recipeCard__img" 
-        :src="cocktail.strMealThumb" 
-        alt="recipe image">
-        <div class="recipeCard__description">
-          <h3>{{ cocktail.strMeal }}</h3>
-          <p>{{ cocktail.strArea }}</p>
-          <p>{{ cocktail.strCategory }}</p>
-        </div>
-      </div>
-      <div class="recipeIngredient">
-        <ul>
-          <li>{{ cocktail.strIngredient1 }}</li>
-        </ul>
-        <ul class="recipeLinks">
-          <li>{{ cocktail.strSource}}</li>
-          <li>{{ cocktail.strTags}}</li>
-          <a href="cocktail.strYoutube"><li>{{ cocktail.strYoutube}}</li></a>
-        </ul>
-      </div>
+    <ul class="list" v-if="verify">
+      <li v-for="(character, i) in filterCharacter" :key="i">
+        {{ character.name }} {{ character.spouse}}
+      </li>
+    </ul>
+    <div v-else>
+      <p v-for="(race, i) in races" :key="i"> {{ race.name }} </p>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import { addCocktail } from "@/api.js";
-
-
+import { GetData } from "@/api.js";
 
 export default {
+
   components:{
-    Header,
   },
   data: () => ({
-    cocktails: [],
+    characters:[],
     src: "",
+    races: [],
+    verify: true,
+    human: true,
   }),
   created(){
-    addCocktail().then(data => {
-      this.cocktails = data.meals
+    GetData()
+    .then(data => {
+      this.characters = data.docs
       console.log(data)
     })
+    .catch(error => {
+      console.error(error)
+    })
   },
+  methods:{
+    filterByRace(race){
+      this.characters.map(character =>{
+        if(character.race.startsWith(`${race}`)){
+          this.races.push(character)
+          this.verify = false
+        }
+        // this.races.splice(`${unrace}`)
+      })
+    },
+  },
+  computed:{
+    filterCharacter(){
+      return this.characters.filter(character => {
+        return character.name.match(this.src)
+      })
+    }
+  }
 }
 </script>
 
 <style>
-.section{
-  padding: 1rem;
-}
+  li{
+    list-style: none;
+  }
 
-.searchBar{
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem 0 1rem  ;
-  background-color: thistle;
-
-}
-
-.form{
-  display: flex;
-  align-items: center;
-}
-
-.filterRecipe{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.recipe {
-  height: 100vh;
-}
-
-.recipeCard{
-  background-color:  rgb(53, 6, 33);
-  display: flex;
-  justify-content: space-between;
-  color: white;
-}
-
-.recipeInfo{
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.recipeIngredient{
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  justify-content: center;
-  align-items: center;
-}
-
-.recipeCard__img{
-  object-fit: cover;
-  width: 100%;
-  height: 300px;
-}
-
-.recipeCard__description{
-  width: 100%;
-}
-
-.recipeLinks{
-  text-align: left;
-  color: aquamarine;
-}
-
-li{
-  list-style: none;
-}
-
+  .list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 </style>

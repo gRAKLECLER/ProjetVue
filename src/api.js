@@ -1,5 +1,8 @@
-export function addCocktail(){
-  return fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
-  .then(Response => 
-    Response.json())
+export function GetData(){
+  return fetch("https://the-one-api.dev/v2/character?limit=100", {
+    headers: new Headers({
+      'Authorization': 'Bearer QwqDTghdYH_tZikaMTRV'
+    })
+  })
+  .then(Response => Response.json())
 }
